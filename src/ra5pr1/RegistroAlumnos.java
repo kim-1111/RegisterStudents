@@ -135,12 +135,15 @@ public class RegistroAlumnos {
         try {
             FileReader fr = new FileReader(newFile);
             BufferedReader br = new BufferedReader(fr);
+            String list = "";
             String line = br.readLine();
             while (line != null) {
-                System.out.println(line);
+                String[] data = line.split(";");
+                list += "\nName: " + data[0] + "  Surname: " + data[1] + "\nAge: " + data[2] + "\nCourse: " + data[3] + "\nDNI: " + data[4] + "\n";
                 line = br.readLine();
             }
             br.close();
+            System.out.println(list);
         } catch (Exception e) {
             System.err.println("Error");
         }
@@ -291,6 +294,7 @@ public class RegistroAlumnos {
 
     /**
      * Writes student data to file
+     *
      * @param students ArrayList of student objects to persist
      */
     public void add(ArrayList<Alumno> students) {
